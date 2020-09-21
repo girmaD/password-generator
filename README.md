@@ -12,7 +12,7 @@ This application  generates a random password based on user-selected criteria. T
 
 ## Objective
 
-The objective of this application is to create a random password that meets certain criteria so that the password provides greater security.
+The objective of this application is to create a random password that meets certain criteria so that the newly created password provides greater security.
 
 ## Snap shot of the UI
 
@@ -22,13 +22,13 @@ The objective of this application is to create a random password that meets cert
 
 1. Click **Generate Password** button
 2. You will be prompted with a question asking *how many charaters you like your password to have*. You will be notified to enter a number that is between 8 and 128.
-3. You will be prompted with a yes or no question asking *whether you like uppercase letters be included in your password*
-4. You will be prompted with a yes or no question asking *whether you like lowercase letters be included in your password*
-5. You will be prompted with a yes or no question asking *whether you like special characters be included in your password*
-6. You will be prompted with a yes or no question asking *whether you like numbers be included in your password*
+3. You will then be prompted with a yes or no question asking *whether you like uppercase letters be included in your password*
+4. You will then be prompted with a yes or no question asking *whether you like lowercase letters be included in your password*
+5. You will then be prompted with a yes or no question asking *whether you like special characters be included in your password*
+6. You will then be prompted with a yes or no question asking *whether you like numbers be included in your password*
 7. After taking all the inputs from prompts and confirms - a new password will be generated and displayed in textbox area.
 
-However, if the criteria are not met, you will be asked to enter valid responses in each step. For the password to be successfully generated, your password should have a length between 8 and 128 characters and you have to select at least one character type to be included in the password. Otherwise, you will be alerted and propted with the approprate information and told to enter a valid and acceptable input.
+However, if the criteria are not met, you will be asked to enter valid responses in each step. For the password to be successfully generated, your password should have a length between 8 and 128 characters and you have to select at least one character type to be included in the password. Otherwise, you will be alerted and prompted with the approprate information and told to enter a valid and acceptable input.
 
 ## Contact
 

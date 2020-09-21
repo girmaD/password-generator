@@ -1,17 +1,5 @@
-///////////////////////////////////////////////////////////////////////
-// PASSWORD GENERATOR
-//
-// * For this assignment, you will not be changing the HTML and CSS at all.
-//
-// * You will need a generatePassword function is called when the user
-//   clicks the Generate Password button.
-//
-// * You can create other functions that are called from within
-//   generatePassword
-//
-// * Gather user input with prompt's and confirm's
 
-    // declare a function called generatePassword
+// declare a function called generatePassword - that returns a string value, newPassword
 function generatePassword(){
     // making sure that at the text content of the text area is empty before generating a password.
     document.getElementById("password").value = "";
@@ -19,7 +7,8 @@ function generatePassword(){
     var newPassword = "";  
     // prompt users password length, change it to integer and assign a variable to hold it
     var numberOfChars = parseInt(prompt("How many characters would you like your new password to have? It must be between 8 & 128 characters"));
-    //while the critria is not met, ask users again and again - until a valid number is entered.
+  
+    // while the critria is not met, ask users again and again - until a valid number is entered.
     // numbersOfChars has to be (a number) and (between 8 & 128 characters) - to be valid.
             
     while(numberOfChars < 8 || numberOfChars > 128 || isNaN(numberOfChars)){   
@@ -35,7 +24,7 @@ function generatePassword(){
     //Ask users to confirm whether they want to include numbers and store it in a variable
     var numericLetters = confirm("Would you like to include numbers?");
     
-    // as long as users doesn't inluce at least one character type, alert and ask them again
+    // as long as users doesn't include at least one character type, alert and ask them again
     while(!upperLetters && !lowerLetters && !specialChars && !numericLetters){
         alert("Please select at least one character type");
         upperLetters = confirm("Would you like to include uppercase letters?");
@@ -54,31 +43,24 @@ function generatePassword(){
     var numbers = "0123456789";
 
     //use for loop (numberOfChar) times   
-    for(var i = 0; i < numberOfChars; i++){
-    //create an empty array 
-    //   var yourPassword = [];
-    //if the user wishes to include uppercase letters, choose a random uppercase letter and push it to the empry array created above   
+    for(var i = 0; i < numberOfChars; i++){    
+    //if the user wishes to include uppercase letters, choose a random uppercase letter from upperCaseLetters string and concatnate with newPassword
       if(upperLetters){
-        newPassword += getRandom(upperCaseLetters);  
-        // yourPassword.push(getRandom(upperCaseLetters));
+          newPassword += getRandom(upperCaseLetters);  
       }      
-      //if the user wishes to include lowercase letters, choose a random uppercase letter and push it to the empry array created above  
+    //if the user wishes to include lowercase letters, choose a random lowercase letter from lowerCaseLetters string and concatnate with newPassword  
       if(lowerLetters){
         newPassword += getRandom(lowerCaseLetters);
-        // yourPassword.push(getRandom(lowerCaseLetters));
+        
       }      
-      //if the user wishes to include special characters, choose a random uppercase letter and push it to the empry array created above  
+     //if the user wishes to include special characters, choose a random special character from specialCharacters string and concatnate with newPassword  
       if(specialChars){
-        newPassword += getRandom(specialCharacters);
-        // yourPassword.push(getRandom(specialCharacters));
+        newPassword += getRandom(specialCharacters);        
       }
-      //if the user wishes to include numbers, choose a random uppercase letter and push it to the empry array created above  
+     //if the user wishes to include numbers , choose a random number from numbers string variable and concatnate with newPassword   
       if(numericLetters){
           newPassword += getRandom(numbers);
-        // yourPassword.push(getRandom(numbers));
       }
-    //transform the array to a string and concatnate it to the empty string var created above   
-    //   newPassword += yourPassword.join("");
     // limit the number of characters to (numberOfChars) as the uses wishes his password length to be   
       newPassword = newPassword.substring(0, numberOfChars);
     }
@@ -96,13 +78,7 @@ function generatePassword(){
   }
 
     
-  ///////////////////////////////////////////////////////////////////////
-  // DO NOT TOUCH THIS CODE
-  //
-  // This code handles:
-  // * clicking the Generate Password
-  // * writing the password to the screen
-  //
+  ///////////////////////////////////////////////////////////////////////  
   
   var generateBtn = document.querySelector("#generate");
   
