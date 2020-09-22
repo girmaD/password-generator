@@ -8,9 +8,6 @@ var specialCharacters = ["!","#","$","%","&","'","(",")","*","+",",","-",".","/"
 //declate a string variable containing all numbers
 var numbers = ["0","1","3","4","5","6","7","8","9"];
 
-// declare an empty string
-var avalChars = [];
-
 
 function getPasswordLength(){
   // prompt users password length, change it to integer and assign a variable to hold it
@@ -35,13 +32,14 @@ function getRandom(items){
   // return randomChar chosen as a result of the randomIndex
     return randomChar;
 }
+
 // declare a function called generatePassword - that returns a string value, newPassword
 function generatePassword(){
     // bring getPasswordLength functon here and declate it as a variable
     var numberOfChars = getPasswordLength();
     // declare an empty string variable
-    var newPassword = "";            
-
+    var newPassword = ""; 
+  
     //Ask users to confirm whether they want to include uppercase letters and store it in a variable
     var upperLetters = confirm("Would you like to include uppercase letters?");
     //Ask users to confirm whether they want to include lowercase letters and store it in a variable
@@ -59,6 +57,8 @@ function generatePassword(){
         specialChars = confirm("Would you like to include special characters?");
         numericLetters = confirm("Would you like to include numbers?");
     }
+    // declare an empty string
+    var avalChars = [];  
 
     //if the user wishes to include uppercase letters,  
     if(upperLetters){
