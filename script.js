@@ -1,20 +1,47 @@
+// Global variables
+//declate a string variable containing all uppper case letters  
+var upperCaseLetters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+//declate a string variable containing all lower case letters 
+var lowerCaseLetters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+//declate a string variable containing all special characters 
+var specialCharacters = ["!","#","$","%","&","'","(",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","]","^","_","{","|","}","~"];
+//declate a string variable containing all numbers
+var numbers = ["0","1","3","4","5","6","7","8","9"];
 
+// declare an empty string
+var avalChars = [];
+
+
+function getPasswordLength(){
+  // prompt users password length, change it to integer and assign a variable to hold it
+  var numberOfChars = parseInt(prompt("How many characters would you like your new password to have? It must be between 8 & 128 characters"));
+  
+  // while the critria is not met, ask users again and again - until a valid number is entered.
+  // numbersOfChars has to be (a number) and (between 8 & 128 characters) - to be valid.
+          
+  while(numberOfChars < 8 || numberOfChars > 128 || isNaN(numberOfChars)){   
+      alert("Please enter a valid number between 8 & 128");     
+      numberOfChars = parseInt(prompt("How many characters would you like your new password to have? It must be between 8 & 128 characters"));
+    } 
+  return numberOfChars
+}
+
+// declare a function called getRandom that returns a randomIndex for a string variable  
+function getRandom(items){
+  // choose a random number between zero and the length of the string argument and chop of the decimals   
+    var randomIndex = Math.floor(Math.random() * items.length);
+  // Assign the chosen randomNumber to be an index of the string argument
+    var randomChar = items[randomIndex];
+  // return randomChar chosen as a result of the randomIndex
+    return randomChar;
+}
 // declare a function called generatePassword - that returns a string value, newPassword
 function generatePassword(){
-    // making sure that at the text content of the text area is empty before generating a password.
-    document.getElementById("password").value = "";
+    // bring getPasswordLength functon here and declate it as a variable
+    var numberOfChars = getPasswordLength();
     // declare an empty string variable
-    var newPassword = "";  
-    // prompt users password length, change it to integer and assign a variable to hold it
-    var numberOfChars = parseInt(prompt("How many characters would you like your new password to have? It must be between 8 & 128 characters"));
-  
-    // while the critria is not met, ask users again and again - until a valid number is entered.
-    // numbersOfChars has to be (a number) and (between 8 & 128 characters) - to be valid.
-            
-    while(numberOfChars < 8 || numberOfChars > 128 || isNaN(numberOfChars)){   
-        alert("Please enter a valid number between 8 & 128");     
-        numberOfChars = parseInt(prompt("How many characters would you like your new password to have? It must be between 8 & 128 characters"));
-    }    
+    var newPassword = "";            
+
     //Ask users to confirm whether they want to include uppercase letters and store it in a variable
     var upperLetters = confirm("Would you like to include uppercase letters?");
     //Ask users to confirm whether they want to include lowercase letters and store it in a variable
@@ -33,50 +60,45 @@ function generatePassword(){
         numericLetters = confirm("Would you like to include numbers?");
     }
 
-    //declate a string variable containing all uppper case letters  
-    var upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    //declate a string variable containing all lower case letters 
-    var lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz";
-    //declate a string variable containing all special characters 
-    var specialCharacters = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
-    //declate a string variable containing all numbers
-    var numbers = "0123456789";
-
-    //use for loop (numberOfChar) times   
-    for(var i = 0; i < numberOfChars; i++){    
-    //if the user wishes to include uppercase letters, choose a random uppercase letter from upperCaseLetters string and concatnate with newPassword
-      if(upperLetters){
-          newPassword += getRandom(upperCaseLetters);  
-      }      
-    //if the user wishes to include lowercase letters, choose a random lowercase letter from lowerCaseLetters string and concatnate with newPassword  
-      if(lowerLetters){
-        newPassword += getRandom(lowerCaseLetters);
-        
-      }      
-     //if the user wishes to include special characters, choose a random special character from specialCharacters string and concatnate with newPassword  
-      if(specialChars){
-        newPassword += getRandom(specialCharacters);        
-      }
-     //if the user wishes to include numbers , choose a random number from numbers string variable and concatnate with newPassword   
-      if(numericLetters){
-          newPassword += getRandom(numbers);
-      }
-    // limit the number of characters to (numberOfChars) as the uses wishes his password length to be   
-      newPassword = newPassword.substring(0, numberOfChars);
+    //if the user wishes to include uppercase letters,  
+    if(upperLetters){
+    // choose a random uppercase letter from upperCaseLetters arrand and concatnate it to newPassword var.
+        newPassword += getRandom(upperCaseLetters);
+    // and join it with availChars array
+        avalChars = avalChars.concat(upperCaseLetters); 
+    }      
+  //if the user wishes to include lowercase letters,  
+    if(lowerLetters){
+    // choose a random lowercase letter from lowerCaseLetters string and concatnate with newPassword  
+      newPassword += getRandom(lowerCaseLetters);   
+    // and join it with availChars array
+      avalChars = avalChars.concat(lowerCaseLetters);     
+    }      
+  //if the user wishes to include special characters,   
+    if(specialChars){
+    //choose a random special character from specialCharacters string and concatnate with newPassword 
+      newPassword += getRandom(specialCharacters);   
+    // and join it with availChars array  
+      avalChars = avalChars.concat(specialCharacters);     
     }
-    //finally the function returnsnewPassword 
+  //if the user wishes to include numbers ,
+    if(numericLetters){
+    // choose a random number from numbers string variable and concatnate with newPassword     
+        newPassword += getRandom(numbers);
+    //  and join it with availChars array     
+        avalChars = avalChars.concat(numbers);
+    }
+       
+  //use for loop to add random chars from where we stoped on the if statements (newPassword.length) until the password length is equal to number of chars  
+    for(var i = newPassword.length; i < numberOfChars; i++){    
+      
+    // limit the number of characters to (numberOfChars) as the uses wishes his password length to be   
+      newPassword += getRandom(avalChars)
+
+    }
+    //finally the function returns newPassword 
     return newPassword;
 }
-// declare a function called getRandom that returns a randomIndex for a string variable  
-  function getRandom(items){
-  // choose a random number between zero and the length of the string argument and chop of the decimals   
-    var randomIndex = Math.floor(Math.random() * items.length);
-  // Assign the chosen randomNumber to be an index of the string argument
-    var randomChar = items[randomIndex];
-  // return randomChar chosen as a result of the randomIndex
-    return randomChar;
-  }
-
     
   ///////////////////////////////////////////////////////////////////////  
   
@@ -85,8 +107,7 @@ function generatePassword(){
   // Write password to the #password input
   function writePassword() {
     var password = generatePassword();
-    var passwordText = document.querySelector("#password");
-  
+    var passwordText = document.querySelector("#password");  
     passwordText.value = password;
   }
   
