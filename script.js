@@ -94,8 +94,11 @@ function generatePassword(){
       
     // limit the number of characters to (numberOfChars) as the uses wishes his password length to be   
       newPassword += getRandom(avalChars)
+      
 
     }
+    // after the password is formed, availchars array has to be empty to make it ready for next round of password criteria.
+    avalChars.value = [];
     //finally the function returns newPassword 
     return newPassword;
 }
